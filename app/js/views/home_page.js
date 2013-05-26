@@ -12,6 +12,7 @@ window.app.views.HomePage = Backbone.View.extend({
   events: {
     "mouseover .shows-message-when-hovered" : "setMessage",
     "mouseout  .shows-message-when-hovered" : "restoreMessage",
+    "click #test-error": "errorz",
     "click .logout" : "logout"
   },
 
@@ -35,6 +36,10 @@ window.app.views.HomePage = Backbone.View.extend({
   onLogoutSuccess: function(response) {
     alert(response.message);
     Backbone.history.navigate('login', true);
+  },
+
+  errorz: function() {
+    throw ' Wicked bad error, guy. ';
   },
 
   render: function() {

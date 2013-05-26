@@ -19,6 +19,7 @@ window.app.router = Backbone.Router.extend({
 
   renderPage: function(PageClass, options) {
     var page = new PageClass(options);
+    page.spyMonkey();
     $("#view").empty().append(page.render().el);
   }
 });
