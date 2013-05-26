@@ -15,8 +15,7 @@
     <script type="text/javascript" src="<%= js %>"></script>
     <script type="text/javascript">
       window.onerror = function(msg, url, lineNo)  {
-        console.log(bbSpy, msg, url, lineNo);
-        alert("posting array of views to reporting service");
+        spyService(msg, url, lineNo);
       }
     </script>
   </body>

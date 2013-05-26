@@ -13,7 +13,4 @@ monkeyPatch = {
     }
 };
 
-_.extend(Backbone.View.prototype, monkeyPatch);
-AppView = Backbone.View.extend();
-appView = new AppView();
-appView.spyMonkey();
+_.extend(Backbone.Model.prototype, monkeyPatch);

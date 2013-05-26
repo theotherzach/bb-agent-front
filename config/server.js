@@ -21,5 +21,8 @@ module.exports = {
     app.post('/logout', function(req, res) {
       res.json({ message: 'logging out!'});
     });
+    app.post('/bb_spy', function(req, res) {
+      res.json({ message: 'object captured'});
+    });
   }
 };
