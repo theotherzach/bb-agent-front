@@ -19,11 +19,14 @@ window.app.views.HomePage = Backbone.View.extend({
 
   setMessage: function(e) {
     var message = $(e.currentTarget).attr("message");
+    var that = this;
     spyService.startTimer(message);
-    this.model.set({
-      message: message,
-      hover_count: this.model.get('hover_count')+1,
-    });
+    setTimeout(
+      function(){
+        that.model.set('message', message);
+      },
+      1000 + Math.floor(Math.random() * 1000)
+    )
   },
 
   restoreMessage: function() {
@@ -33,7 +36,7 @@ window.app.views.HomePage = Backbone.View.extend({
   },
 
   updateMessage: function(model, message) {
-    console.log(spyService.stopTimer(message));
+    spyService.stopTimer(message);
     this.$(".alert-box").text(message);
   },
 

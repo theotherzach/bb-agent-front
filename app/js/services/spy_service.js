@@ -1,6 +1,6 @@
 spyService = {
   postError: function(msg, url, lineNo) {
-    console.log(bbSpy[0], msg, url, lineNo);
+    // console.log(bbSpy[0], msg, url, lineNo);
     var data = {
       model_state: JSON.stringify(bbSpy),
       error_message: msg,
@@ -10,7 +10,7 @@ spyService = {
     $.ajax({
       type: "POST",
       url: '/bbs_error',
-      success: console.log("success post", data),
+      // success: console.log("success post", data),
       data: data,
     });
   },
@@ -20,16 +20,17 @@ spyService = {
   },
 
   startTimer: function(name){
-    this.performanceStorage = this.performanceStorage || {};
-    return this.performanceStorage[name] = {
+    this.performances = this.performances || {};
+    return this.performances[name] = {
       name: name,
       timeStarted: new Date().getTime(),
     };
   },
 
   stopTimer: function(name){
-    var performed = this.performanceStorage[name];
+    var performed = this.performances[name];
     performed.timeStopped = new Date().getTime();
+    performed.elapsed = performed.timeStopped - this.performances[name].timeStarted
     this.postPerformance(performed);
   },
 
@@ -39,7 +40,6 @@ spyService = {
       url: 'bbs_performance',
       type: 'POST',
       data: data,
-      success: console.log("performance posted", data)
     });
   },
 };
