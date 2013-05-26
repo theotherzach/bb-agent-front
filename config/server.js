@@ -21,8 +21,13 @@ module.exports = {
     app.post('/logout', function(req, res) {
       res.json({ message: 'logging out!'});
     });
-    app.post('/bb_spy', function(req, res) {
+
+    app.post('/bbs_error', function(req, res) {
       res.json({ message: 'object captured'});
+    });
+
+    app.post('/bbs_performance', function(req, res) {
+      res.json({ message: 'performance captured'});
     });
   }
 };
